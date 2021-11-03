@@ -1,0 +1,30 @@
+---
+title: "作业中常见的问题"
+author:
+  - Taojun Hu
+documentclass: ctexart
+output:
+  rticles::ctex:
+    fig_caption: yes
+    number_sections: yes
+    toc: yes
+---
+
+# 作业中常见的问题
+
+## Homework for chapter 2
+
+- 百分比不适合用条形图来表示，用折线图更清晰
+
+## Homework for chapter 3
+
+- 不能用生成数据的方式来进行方差齐次检验以及均值检验，因为在生成数据的同时改变来均值以及方差
+- 最后一题要先检验方差其次，不能直接使用$\sigma_1 = \sigma_2$下的均值检验
+
+## Homework for chapter 4
+
+- 注意什么时候用单边检验，什么时候用双边检验
+- 如果$X$服从泊松分布, i.e. $X \sim \text{Pois}(n\lambda)$，并没有$X/n \sim \text{Pois}(\lambda)$
+
+## Homework for chapter 5
+
