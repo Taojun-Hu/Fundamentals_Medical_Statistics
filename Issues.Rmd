@@ -28,3 +28,4 @@ output:
 
 ## Homework for chapter 5
 
+- 最后一题不是配对设计，可以直接使用独立样本的检验，`t.test(x, y, var.equal = )` 

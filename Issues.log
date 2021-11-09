@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.4.14)  4 NOV 2021 03:51
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.4.14)  10 NOV 2021 00:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -893,18 +893,52 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 [1
 
 ]
+
+Package fontspec Warning: Font "STFangsong" does not contain requested Script
+(fontspec)                "CJK".
+
+
+Package fontspec Info: STFangsong scale = 0.9707181870057879.
+
+
+Package fontspec Info: Could not resolve font "STFangsong/BI" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "STFangsong/B" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "STFangsong/I" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: STFangsong scale = 0.9707181870057879.
+
+
+Package fontspec Info: Font family 'STFangsong(0)' created for font
+(fontspec)             'STFangsong' with options
+(fontspec)             [Scale=MatchLowercase,Script={CJK}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[0.9707181870057879]"STFangsong/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
 LaTeX Font Info:    Font shape `TU/SongtiSCLight(0)/m/sl' in size <10.53937> no
 t available
 (Font)              Font shape `TU/SongtiSCLight(0)/m/it' tried instead on inpu
-t line 114.
+t line 120.
 [2] (./Issues.aux) ) 
 Here is how much of TeX's memory you used:
- 20451 strings out of 476919
- 399997 string characters out of 5821840
+ 20471 strings out of 476919
+ 400394 string characters out of 5821840
  858740 words of memory out of 5000000
- 40118 multiletter control sequences out of 15000+600000
- 409969 words of font info for 91 fonts, out of 8000000 for 9000
+ 40127 multiletter control sequences out of 15000+600000
+ 410009 words of font info for 96 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 101i,6n,122p,527b,402s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 101i,6n,123p,527b,402s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on Issues.pdf (2 pages).

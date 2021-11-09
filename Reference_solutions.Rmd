@@ -31,6 +31,7 @@ options( warn = -1 )
 - chapter 3: page 249 3(1)(2)(4)
 - chapter 4: page 254 3(3)(4); page 256 3(1)(4)
 - chapter 5: page 258 1; page 258 2, 3
+- chapter 6: page 260 1; page 264 3(2)
 
 # Reference solutions
 
@@ -301,7 +302,7 @@ residualPlot(mod.yx)
 
 The residual plot shows the residuals don't follow linear assumption, we should make transformation to variables. 
 
-2. (Page 260 3(1))
+2. (Page 264 3(2))
 
 Omitted.
 
