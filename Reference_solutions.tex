@@ -508,13 +508,335 @@ No significant differences.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
+\tightlist
 \item
   (Page 258, 1)
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data.thyroid }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{group =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\StringTok{\textquotesingle{}high\textquotesingle{}}\NormalTok{, }\DecValTok{9}\NormalTok{), }\FunctionTok{rep}\NormalTok{(}\StringTok{\textquotesingle{}mid\textquotesingle{}}\NormalTok{, }\DecValTok{8}\NormalTok{), }\FunctionTok{rep}\NormalTok{(}\StringTok{\textquotesingle{}low\textquotesingle{}}\NormalTok{, }\DecValTok{7}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{factor}\NormalTok{(), }
+                           \AttributeTok{thyroid =} \FunctionTok{c}\NormalTok{(}\DecValTok{34}\NormalTok{, }\DecValTok{45}\NormalTok{, }\DecValTok{49}\NormalTok{, }\DecValTok{55}\NormalTok{, }\DecValTok{58}\NormalTok{, }\DecValTok{59}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{72}\NormalTok{, }\DecValTok{86}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{25}\NormalTok{, }\DecValTok{36}\NormalTok{, }
+                                       \DecValTok{40}\NormalTok{, }\DecValTok{42}\NormalTok{, }\DecValTok{53}\NormalTok{, }\DecValTok{65}\NormalTok{, }\DecValTok{74}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{18}\NormalTok{, }\DecValTok{32}\NormalTok{, }\DecValTok{45}\NormalTok{, }\DecValTok{47}\NormalTok{, }\DecValTok{65}\NormalTok{))}
+
+\FunctionTok{bartlett.test}\NormalTok{(thyroid }\SpecialCharTok{\textasciitilde{}}\NormalTok{ group, }\AttributeTok{data =}\NormalTok{ data.thyroid)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  thyroid by group
+## Bartlett's K-squared = 1.1653, df = 2, p-value = 0.5584
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit.thyroid }\OtherTok{\textless{}{-}} \FunctionTok{aov}\NormalTok{(thyroid }\SpecialCharTok{\textasciitilde{}}\NormalTok{ group, }\AttributeTok{data =}\NormalTok{ data.thyroid)}
+\FunctionTok{summary}\NormalTok{(fit.thyroid)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             Df Sum Sq Mean Sq F value Pr(>F)  
+## group        2   2744  1372.1   3.623 0.0445 *
+## Residuals   21   7953   378.7                 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"No difference in variance. Significant difference in average }
+\StringTok{    level for each group."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## No difference in variance. Significant difference in average 
+##     level for each group.
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
 \item
   (Page 258, 2)
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data.rat }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{type =} \FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}C\textquotesingle{}}\NormalTok{), }\AttributeTok{each =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{factor}\NormalTok{(), }
+                       \AttributeTok{group =} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{factor}\NormalTok{(), }
+                       \AttributeTok{hours =} \FunctionTok{c}\NormalTok{(}\FloatTok{1.16}\NormalTok{, }\FloatTok{2.11}\NormalTok{, }\FloatTok{1.82}\NormalTok{, }\FloatTok{1.41}\NormalTok{, }\FloatTok{0.51}\NormalTok{, }\FloatTok{1.30}\NormalTok{, }\FloatTok{3.28}\NormalTok{, }\FloatTok{4.98}\NormalTok{, }
+                                 \FloatTok{2.59}\NormalTok{, }\FloatTok{0.59}\NormalTok{, }\FloatTok{3.36}\NormalTok{, }\FloatTok{5.28}\NormalTok{, }\FloatTok{4.81}\NormalTok{, }\FloatTok{2.04}\NormalTok{, }\FloatTok{5.05}\NormalTok{))}
+
+\NormalTok{fit.rat }\OtherTok{\textless{}{-}} \FunctionTok{aov}\NormalTok{(hours }\SpecialCharTok{\textasciitilde{}}\NormalTok{ type }\SpecialCharTok{+}\NormalTok{ group, }\AttributeTok{data=}\NormalTok{ data.rat)}
+\FunctionTok{summary}\NormalTok{(fit.rat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             Df Sum Sq Mean Sq F value Pr(>F)  
+## type         2  18.45   9.224   7.204 0.0162 *
+## group        4  10.72   2.680   2.093 0.1736  
+## Residuals    8  10.24   1.280                 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"No significant difference for each group but there is significant }
+\StringTok{    difference for various types of drug. "}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## No significant difference for each group but there is significant 
+##     difference for various types of drug.
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
 \item
   (Page 258, 3)
 \end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dummy }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{before =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\FloatTok{3.5}\NormalTok{, }\FloatTok{3.2}\NormalTok{, }\FloatTok{3.2}\NormalTok{, }\FloatTok{3.3}\NormalTok{, }\FloatTok{3.4}\NormalTok{, }\FloatTok{2.7}\NormalTok{, }\FloatTok{4.8}\NormalTok{, }\FloatTok{4.5}\NormalTok{, }\FloatTok{3.8}\NormalTok{), }
+                    \AttributeTok{after =} \FunctionTok{c}\NormalTok{(}\FloatTok{5.4}\NormalTok{, }\FloatTok{4.7}\NormalTok{, }\FloatTok{5.2}\NormalTok{, }\FloatTok{4.8}\NormalTok{, }\FloatTok{4.6}\NormalTok{, }\FloatTok{4.9}\NormalTok{, }\FloatTok{3.8}\NormalTok{, }\FloatTok{6.1}\NormalTok{, }\FloatTok{5.9}\NormalTok{, }\FloatTok{4.9}\NormalTok{))}
+\NormalTok{dummy\_diff }\OtherTok{\textless{}{-}} \FunctionTok{with}\NormalTok{(dummy, after }\SpecialCharTok{{-}}\NormalTok{ before)}
+
+\NormalTok{pills }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{before =} \FunctionTok{c}\NormalTok{(}\FloatTok{3.5}\NormalTok{, }\FloatTok{3.3}\NormalTok{, }\FloatTok{3.2}\NormalTok{, }\FloatTok{4.5}\NormalTok{, }\FloatTok{4.3}\NormalTok{, }\FloatTok{3.2}\NormalTok{, }\FloatTok{4.2}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{4.3}\NormalTok{, }\FloatTok{3.6}\NormalTok{), }
+                    \AttributeTok{after =} \FunctionTok{c}\NormalTok{(}\FloatTok{4.7}\NormalTok{, }\FloatTok{4.4}\NormalTok{, }\FloatTok{4.}\NormalTok{, }\FloatTok{5.2}\NormalTok{, }\FloatTok{5.}\NormalTok{, }\FloatTok{4.3}\NormalTok{, }\FloatTok{5.1}\NormalTok{, }\FloatTok{6.5}\NormalTok{, }\FloatTok{4.}\NormalTok{, }\FloatTok{4.7}\NormalTok{))}
+\NormalTok{pills\_diff }\OtherTok{\textless{}{-}} \FunctionTok{with}\NormalTok{(pills, after }\SpecialCharTok{{-}}\NormalTok{ before)}
+
+\NormalTok{dt.combined }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{dummy =}\NormalTok{ dummy\_diff, }\AttributeTok{pills =}\NormalTok{ pills\_diff) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{everything}\NormalTok{(), }\AttributeTok{names\_to =} \StringTok{"group"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"hours"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{group =} \FunctionTok{factor}\NormalTok{(group))}
+\FunctionTok{bartlett.test}\NormalTok{(hours }\SpecialCharTok{\textasciitilde{}}\NormalTok{ group, }\AttributeTok{data =}\NormalTok{ dt.combined)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  hours by group
+## Bartlett's K-squared = 2.7758, df = 1, p-value = 0.0957
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(dummy\_diff, pills\_diff, }\AttributeTok{var.equal =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  dummy_diff and pills_diff
+## t = 2.9203, df = 18, p-value = 0.009137
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  0.1430897 0.8769103
+## sample estimates:
+## mean of x mean of y 
+##      1.39      0.88
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"No difference in variance. By t{-}test we can conclude that there is significant }
+\StringTok{    different between the effect of pills and that of placebo."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## No difference in variance. By t-test we can conclude that there is significant 
+##     different between the effect of pills and that of placebo.
+\end{verbatim}
+
+\hypertarget{solutions-for-chapter-6}{%
+\subsection{Solutions for chapter 6}\label{solutions-for-chapter-6}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  (Page 260 1)
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\tightlist
+\item
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data.cstu }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{height=} \FunctionTok{c}\NormalTok{(}\DecValTok{170}\NormalTok{, }\DecValTok{173}\NormalTok{, }\DecValTok{160}\NormalTok{, }\DecValTok{155}\NormalTok{, }\DecValTok{173}\NormalTok{, }\DecValTok{188}\NormalTok{, }\DecValTok{178}\NormalTok{, }\DecValTok{183}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{165}\NormalTok{), }
+                        \AttributeTok{frontarm =} \FunctionTok{c}\NormalTok{(}\DecValTok{45}\NormalTok{, }\DecValTok{42}\NormalTok{, }\DecValTok{44}\NormalTok{, }\DecValTok{41}\NormalTok{, }\DecValTok{47}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{47}\NormalTok{, }\DecValTok{46}\NormalTok{, }\DecValTok{49}\NormalTok{, }\DecValTok{43}\NormalTok{))}
+\FunctionTok{ggscatter}\NormalTok{(}\AttributeTok{data =}\NormalTok{ data.cstu, }\AttributeTok{x =} \StringTok{\textquotesingle{}height\textquotesingle{}}\NormalTok{, }\AttributeTok{y =} \StringTok{\textquotesingle{}frontarm\textquotesingle{}}\NormalTok{, }\AttributeTok{palette =} \StringTok{\textquotesingle{}npg\textquotesingle{}}\NormalTok{, }
+          \AttributeTok{shape =} \DecValTok{3}\NormalTok{, }\AttributeTok{title =} \StringTok{\textquotesingle{}Scatterplot between Height and Front Arm Length\textquotesingle{}}\NormalTok{, }
+          \AttributeTok{add =} \StringTok{\textquotesingle{}reg.line\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{Reference_solutions_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{with}\NormalTok{(data.cstu, }\FunctionTok{cor}\NormalTok{(height, frontarm))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8227162
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{with}\NormalTok{(data.cstu, }\FunctionTok{cor.test}\NormalTok{(height, frontarm))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's product-moment correlation
+## 
+## data:  height and frontarm
+## t = 4.0936, df = 8, p-value = 0.003468
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.4006045 0.9567450
+## sample estimates:
+##       cor 
+## 0.8227162
+\end{verbatim}
+
+Figure shows they are jointly normal distributed. We use Pearson's test
+for correlation (\(P < 0.01\)). The results show that Height and Length
+of front arm are correlated, with Pearson's correlation coefficient as
+0.82.
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod.xy }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(height }\SpecialCharTok{\textasciitilde{}}\NormalTok{ frontarm, }\AttributeTok{data =}\NormalTok{ data.cstu)}
+\FunctionTok{summary}\NormalTok{(mod.xy)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = height ~ frontarm, data = data.cstu)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -8.4643 -3.8036 -0.9643  1.9018 10.3010 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)   
+## (Intercept)  41.6276    32.0311   1.300  0.22993   
+## frontarm      2.8827     0.7042   4.094  0.00347 **
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 6.235 on 8 degrees of freedom
+## Multiple R-squared:  0.6769, Adjusted R-squared:  0.6365 
+## F-statistic: 16.76 on 1 and 8 DF,  p-value: 0.003468
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{residualPlot}\NormalTok{(mod.xy, }\AttributeTok{id =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Reference_solutions_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# aov(mod.xy)}
+\end{Highlighting}
+\end{Shaded}
+
+The residual plot shows the residuals follow the linear assumption, and
+the estimated coefficient is significantly different with 0.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod.yx }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(frontarm }\SpecialCharTok{\textasciitilde{}}\NormalTok{ height, }\AttributeTok{data =}\NormalTok{ data.cstu)}
+\FunctionTok{summary}\NormalTok{(mod.yx)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = frontarm ~ height, data = data.cstu)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.5174 -0.5519  0.2478  1.3521  1.8390 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)   
+## (Intercept)  4.89610    9.91053   0.494  0.63456   
+## height       0.23481    0.05736   4.094  0.00347 **
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.78 on 8 degrees of freedom
+## Multiple R-squared:  0.6769, Adjusted R-squared:  0.6365 
+## F-statistic: 16.76 on 1 and 8 DF,  p-value: 0.003468
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{residualPlot}\NormalTok{(mod.yx)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Reference_solutions_files/figure-latex/unnamed-chunk-19-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# aov(mod.yx)}
+\end{Highlighting}
+\end{Shaded}
+
+The residual plot shows the residuals don't follow linear assumption, we
+should make transformation to variables.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  (Page 260 3(1))
+\end{enumerate}
+
+Omitted.
 
 \newpage
 
@@ -637,6 +959,28 @@ variance}\label{chapter-5-analysis-of-variance}}
   For a pairwise comparison, we can use a post hoc test with adjust
   p-value,
   \texttt{pairwise.t.test(group,\ score,\ p.adjust.method\ =\ "holm")}
+\end{itemize}
+
+\hypertarget{chapter-6-regression-analysis}{%
+\subsection{chapter 6: regression
+analysis}\label{chapter-6-regression-analysis}}
+
+\begin{itemize}
+\tightlist
+\item
+  Compute the correlations. (1) when data follows joint normal
+  distribution, then use pearson correlation
+  \texttt{cor(x,\ y,\ method\ =\ \textquotesingle{}pearson\textquotesingle{});\ cor.test(..)};
+  (draw figures to verify the joint normality first) (2) when data does
+  not follow normal distribution, then use spearman's correlation,
+  \texttt{cor(x,\ y,\ method\ =\ "spearman")}
+\item
+  Statistical inference in linear regression model. (1) t-test for
+  coefficients, \texttt{confint(model,\ level\ =\ .95)}; (2) for fitting
+  and prediction, the interval estimations are not identical,
+  \texttt{predict(model,\ newdata\ =\ data.frame(var\ =\ ),\ interval\ =\ c(\textquotesingle{}prediction\textquotesingle{},\ \textquotesingle{}confidence\textquotesingle{}),\ level\ =\ .95)}.
+\item
+  Life table (Omitted)
 \end{itemize}
 
 \hypertarget{suggestions-for-advanced-r-or-statistics}{%

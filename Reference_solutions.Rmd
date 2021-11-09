@@ -22,6 +22,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 if (! require(pacman)) install.packages("pacman")
 pacman::p_load(tidyverse, ggpubr)
+if (! require(alr4)) install.packages('alr4')
 options( warn = -1 )
 ```
 
@@ -209,7 +210,7 @@ No significant differences.
 ## Solutions for chapter 5
 
 1. (Page 258, 1)
-```{r, echo=FALSE, eval=FALSE}
+```{r}
 data.thyroid <- data.frame(group = c(rep('high', 9), rep('mid', 8), rep('low', 7)) %>% factor(), 
                            thyroid = c(34, 45, 49, 55, 58, 59, 60, 72, 86, 8, 25, 36, 
                                        40, 42, 53, 65, 74, 5, 8, 18, 32, 45, 47, 65))
@@ -225,7 +226,7 @@ cat("No difference in variance. Significant difference in average
 
 2. (Page 258, 2)
 
-```{r, echo=FALSE, eval=FALSE}
+```{r}
 data.rat <- data.frame(type = rep(c('A', 'B', 'C'), each = 5) %>% factor(), 
                        group = rep(1:5, 3) %>% factor(), 
                        hours = c(1.16, 2.11, 1.82, 1.41, 0.51, 1.30, 3.28, 4.98, 
@@ -241,7 +242,7 @@ cat("No significant difference for each group but there is significant
 
 3. (Page 258, 3)
 
-```{r, echo=FALSE, eval=FALSE}
+```{r}
 dummy <- data.frame(before = c(4, 3.5, 3.2, 3.2, 3.3, 3.4, 2.7, 4.8, 4.5, 3.8), 
                     after = c(5.4, 4.7, 5.2, 4.8, 4.6, 4.9, 3.8, 6.1, 5.9, 4.9))
 dummy_diff <- with(dummy, after - before)
@@ -261,7 +262,48 @@ cat("No difference in variance. By t-test we can conclude that there is signific
 ```
 
 
+## Solutions for chapter 6
 
+1. (Page 260 1)
+
+(1)
+```{r}
+data.cstu <- data.frame(height= c(170, 173, 160, 155, 173, 188, 178, 183, 180, 165), 
+                        frontarm = c(45, 42, 44, 41, 47, 50, 47, 46, 49, 43))
+ggscatter(data = data.cstu, x = 'height', y = 'frontarm', palette = 'npg', 
+          shape = 3, title = 'Scatterplot between Height and Front Arm Length', 
+          add = 'reg.line')
+
+with(data.cstu, cor(height, frontarm))
+
+with(data.cstu, cor.test(height, frontarm))
+```
+
+Figure shows they are jointly normal distributed. We use Pearson's test for correlation ($P < 0.01$). The results show that Height and Length of front arm are correlated, with Pearson's correlation coefficient as 0.82. 
+
+(2)
+
+```{r}
+mod.xy <- lm(height ~ frontarm, data = data.cstu)
+summary(mod.xy)
+residualPlot(mod.xy, id = TRUE)
+# aov(mod.xy)
+```
+
+The residual plot shows the residuals follow the linear assumption, and the estimated coefficient is significantly different with 0.
+
+```{r}
+mod.yx <- lm(frontarm ~ height, data = data.cstu)
+summary(mod.yx)
+residualPlot(mod.yx)
+# aov(mod.yx)
+```
+
+The residual plot shows the residuals don't follow linear assumption, we should make transformation to variables. 
+
+2. (Page 260 3(1))
+
+Omitted.
 
 \newpage
 # Remarks
@@ -296,7 +338,11 @@ Here lists several notes that might be forgotten
 - R code for anova: (1) testing the homoscedasticity, `barlett.test(score ~ group, data = )`; (2) anova, `score.aov = aov(score ~ group, data = ); summary(score.aov)`; (3) randomized-block design, `aov(score ~ blocknum + group, data = ) %>% summary()`; (4) analysis of covariance, `fit <- aov(score ~ age + group, data = ); summary(fit)`; to show group effects, `library(effects); effect("group", fit)`; to pairwise compare, `library(multcomp); res.vsl = glht(fit, linfct = mcp(group = c("a -b = 0", "b - c = 0", "a - c = 0"))); summary(res.vsl, test = adjusted("bonferroni"))`
 - For a pairwise comparison, we can use a post hoc test with adjust p-value, `pairwise.t.test(group, score, p.adjust.method = "holm")`
 
+## chapter 6: regression analysis
 
+- Compute the correlations. (1) when data follows joint normal distribution, then use pearson correlation `cor(x, y, method = 'pearson'); cor.test(..)`; (draw figures to verify the joint normality first) (2) when data does not follow normal distribution, then use spearman's correlation, `cor(x, y, method = "spearman")`
+- Statistical inference in linear regression model. (1) t-test for coefficients, `confint(model, level = .95)`; (2) for fitting and prediction, the interval estimations are not identical, `predict(model, newdata = data.frame(var = ), interval = c('prediction', 'confidence'), level = .95)`. 
+- Life table (Omitted)
 
 
 # Suggestions for advanced R or statistics
